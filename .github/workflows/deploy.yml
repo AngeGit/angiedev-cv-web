@@ -9,20 +9,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # necesario para push a gh-pages
+      contents: write  # necessary for pushing to gh-pages
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: Set up Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Build WASM/JS distribution
         run: ./gradlew :composeApp:wasmJsBrowserDistribution
